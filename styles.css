@@ -1,6 +1,7 @@
 * {
     font-family: 'Poppins', sans-serif;
     background-color: #E7F1F1;
+    /* border: black 2px solid */
 }
 
 header {
@@ -11,4 +12,46 @@ header {
 
 h1 {
     font-size: 70px;
+    font-weight: 800;
+}
+
+.colorboxeswrapper {
+    display: flex;
+    justify-content: center;
+
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    border: black 3px solid;
+    margin: 10px;
+}
+
+#color1 {
+   background-color: #EA9999;
+}
+
+#color2 {
+   background-color: #FACB9C;
+}
+
+#color3 {
+    background-color: #FFE59A;
+}
+
+#color4 {
+    background-color: #B6D7A8;
+}
+
+#color5 {
+    background-color: #A4C4CA;
+}
+
+
+.hexvalue {
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    font-weight: 300;
 }
