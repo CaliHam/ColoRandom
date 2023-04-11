@@ -64,7 +64,6 @@ h1 {
     display:flex;
     justify-content: space-around;
     margin: 10%;
-    border: solid black;
     width:640px;
 }
 
@@ -77,4 +76,8 @@ h1 {
     height:40px;
     border:none;
     font-size: 20px;
+}
+
+.hidden{
+    display:none;
 }
