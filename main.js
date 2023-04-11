@@ -29,7 +29,7 @@ function generateHexCode(){
          hexCodes.push(getRandomCharacter)
         }
     }
-    hexCodeString = hexCodes.join('')
+    hexCodeString = '#' + hexCodes.join('')
     return hexCodeString
 }
 
