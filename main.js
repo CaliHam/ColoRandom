@@ -8,10 +8,10 @@ var hex5 = document.querySelector('#hex5');
 var allHex = document.querySelectorAll('.hexvalue')
 
 //EVENT LISTENERS
-// window.addEventListener(function(event){
-//     event.preventDefault();
-//     displayHexCodes()
-// });
+window.addEventListener("load", function(event){
+    event.preventDefault();
+    displayHexCodes()
+});
 newPaletteButton.addEventListener('click', displayHexCodes);
 
 
