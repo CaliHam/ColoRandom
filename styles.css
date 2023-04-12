@@ -54,3 +54,35 @@ h1 {
     text-align: center;
     font-weight: 300;
 }
+
+.buttons-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.new-save-container{
+    display:flex;
+    justify-content: space-around;
+    margin: 10%;
+    width:640px;
+}
+
+.new-button, .save-button{
+    background-color: black;
+    color: white;
+    border-top-right-radius: 250px;
+    border-bottom-left-radius: 250px;
+    width: 200px;
+    height:40px;
+    border:none;
+    font-size: 20px;
+}
+
+.new-button:hover, .save-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.hidden{
+    display:none;
+}
