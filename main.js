@@ -62,6 +62,3 @@ function displayHexCodes(){
         hex5color.style.backgroundColor = codeStrings[4];
         allCodes = codeStrings;
 }
-
-
-// console.log(codeStrings);
