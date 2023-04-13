@@ -4,6 +4,7 @@ var lockButton = document.querySelectorAll('.lock')
 var unlockButton = document.querySelectorAll('.unlock')
 var hexContainers = document.querySelectorAll('.hex-containers')
 var colorBoxWrapper = document.querySelector('.colorboxeswrapper')
+var saveButton = document.querySelector('.save-button')
 
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
@@ -109,4 +110,11 @@ function toggleLocks(e) {
 function changeLock(event) {
     event.target.classList.toggle('lock')
     event.target.classList.toggle('unlock')
+}
+
+saveButton.addEventListener('click', savePalette)
+
+function savePalette() {
+    savedPalettes.push(currentPalette)
+    console.log(savedPalettes)
 }
