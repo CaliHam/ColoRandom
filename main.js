@@ -71,12 +71,24 @@ function generateHexCode(){
 
 //DOM- INNERHTML/TEXT, anything we see on the page 
 function generatePalette(currentPalette) {
-    for (var i = 0; i < currentPalette.hexColors.length; i++){
+    var newPalette = [];
+    for (var i = 0; i < currentPalette.hexColors.length; i++) {
         if (!currentPalette.hexColors[i].isLocked) {
-            currentPalette.hexColors[i].hexCode = generateHexCode()
+            var hex = {
+                hexCode: generateHexCode(),
+                isLocked: false,
+                id: `color${i+1}`
+            };
+            newPalette.push(hex)
+        } else {
+            newPalette.push(currentPalette.hexColors[i])
         }
-    }  
-    return currentPalette
+    } 
+    var updatedPalette = {
+        hexColors: newPalette,
+        id: Date.now()
+    }
+    return updatedPalette
 }
 
 function displayHexCodes(){
