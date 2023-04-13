@@ -9,12 +9,14 @@ var saveButton = document.querySelector('.save-button')
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
     event.preventDefault();
-    generatePalette(currentPalette)
+    var newPalette = generatePalette(currentPalette)
+    currentPalette = newPalette
     displayHexCodes()    
 });
 
 newPaletteButton.addEventListener('click', function() {
-    generatePalette(currentPalette)
+    var newPalette = generatePalette(currentPalette)
+    currentPalette = newPalette    
     displayHexCodes()    
 });
 
@@ -71,7 +73,7 @@ function generateHexCode(){
 
 //DOM- INNERHTML/TEXT, anything we see on the page 
 function generatePalette(currentPalette) {
-    var newPalette = [];
+    var newHexColors = [];
     for (var i = 0; i < currentPalette.hexColors.length; i++) {
         if (!currentPalette.hexColors[i].isLocked) {
             var hex = {
@@ -79,13 +81,13 @@ function generatePalette(currentPalette) {
                 isLocked: false,
                 id: `color${i+1}`
             };
-            newPalette.push(hex)
+            newHexColors.push(hex)
         } else {
-            newPalette.push(currentPalette.hexColors[i])
+            newHexColors.push(currentPalette.hexColors[i])
         }
     } 
     var updatedPalette = {
-        hexColors: newPalette,
+        hexColors: newHexColors,
         id: Date.now()
     }
     return updatedPalette
