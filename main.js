@@ -20,28 +20,32 @@ newPaletteButton.addEventListener('click', function() {
 
 //GLOBAL VARIABLES
 var hexCharacters = ['A','B','C','D','E','F','0','1','2','3','4','5','6','7','8','9'];
-// var hexCodeString;
-// var allCodes = [];
+var savedPalettes = [];
 var currentPalette = {
     hexColors: [{
         hexCode: '#EA9999',
-        isLocked: false
+        isLocked: false,
+        id: 'color1'
     },
     {
         hexCode: '#FACB9C',
-        isLocked: false
+        isLocked: false,
+        id: 'color2'
     },
     {
         hexCode: '#FFE59A',
-        isLocked: false
+        isLocked: false,
+        id: 'color3'
     },
     {
         hexCode: '#B6D7A8',
-        isLocked: false
+        isLocked: false,
+        id: 'color4'
     },
     {
         hexCode: '#A4C4CA',
-        isLocked: false
+        isLocked: false,
+        id: 'color5'
     }],
     id: Date.now()
 }
@@ -66,13 +70,11 @@ function generateHexCode(){
 
 //DOM- INNERHTML/TEXT, anything we see on the page 
 function generatePalette(currentPalette) {
-    console.log(currentPalette.hexColors.isLocked)
     for (var i = 0; i < currentPalette.hexColors.length; i++){
         if (!currentPalette.hexColors[i].isLocked) {
             currentPalette.hexColors[i].hexCode = generateHexCode()
         }
-    }
-    console.log(currentPalette)  
+    }  
     return currentPalette
 }
 
@@ -85,12 +87,6 @@ function displayHexCodes(){
     })
 }
 
-// function toggleLocks(event) {
-//     event.target.classList.toggle('unlock');
-//     event.target.classList.toggle('lock');
-// }
-
-
 colorBoxWrapper.addEventListener('click', function(event) {
     if(event.target.classList.contains('unlock')) {
         toggleLocks(event);
@@ -102,36 +98,15 @@ colorBoxWrapper.addEventListener('click', function(event) {
 
 function toggleLocks(e) {
     var selectedBox = e.target.closest('div')
-    console.log(selectedBox)
     for (var i = 0; i < currentPalette.hexColors.length; i++) {
-        if (currentPalette.hexColors[i].hexCode == selectedBox.hexCode) {
+        if (currentPalette.hexColors[i].id === selectedBox.id) {
         currentPalette.hexColors[i].isLocked = !currentPalette.hexColors[i].isLocked;
         }
-    console.log(currentPalette.hexColors.isLocked)
     }
     changeLock(e)
 }
 
 function changeLock(event) {
-    if (currentPalette.hexColors.isLocked) {
-        console.log('unlock')
-        event.target.classList.toggle('unlock')
-        event.target.classList.toggle('lock')
-    } else {
-        console.log('lock')
-        event.target.classList.toggle('lock')
-        event.target.classList.toggle('unlock')
-    }
+    event.target.classList.toggle('lock')
+    event.target.classList.toggle('unlock')
 }
-
-// for (let i = 0; i < unlockButton.length; i++) {
-//     unlockButton[i].addEventListener("click", function() {
-//       unlockButton[i].classList.toggle("unlock");
-//       unlockButton[i].classList.toggle("lock");
-//       switchLocks()
-//     });
-// }
-
-// function switchLocks() {
-    
-// }
