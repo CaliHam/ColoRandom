@@ -5,7 +5,9 @@ var unlockButton = document.querySelectorAll('.unlock')
 var hexContainers = document.querySelectorAll('.hex-containers')
 var colorBoxWrapper = document.querySelector('.colorboxeswrapper')
 var saveButton = document.querySelector('.save-button')
-
+var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper')
+var savedPaletteHeader = document.querySelector('.saved-palette-header')
+var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container')
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
     event.preventDefault();
@@ -93,6 +95,18 @@ function generatePalette(currentPalette) {
     return updatedPalette
 }
 
+function dispayMinis(){
+savedPaletteBoxCont.innerHTML += `
+<div class="saved-palette-box-container">
+    <div class="mini-box" style="background-color: ${currentPalette.hexColors[0].hexCode}"></div>
+    <div class="mini-box" style="background-color: ${currentPalette.hexColors[1].hexCode}"></div>
+    <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
+    <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
+    <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
+    </div>
+   `
+}
+
 function displayHexCodes(){
     hexContainers.forEach((hex, index) => {
         var box = hex.querySelector('.box')
@@ -130,5 +144,6 @@ saveButton.addEventListener('click', savePalette)
 
 function savePalette() {
     savedPalettes.push(currentPalette)
+    dispayMinis()
     console.log(savedPalettes)
 }
