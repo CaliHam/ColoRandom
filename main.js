@@ -8,6 +8,7 @@ var saveButton = document.querySelector('.save-button')
 var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper')
 var savedPaletteHeader = document.querySelector('.saved-palette-header')
 var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container')
+var noSavedText = document.querySelector('.no-saved')
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
     event.preventDefault();
@@ -96,15 +97,15 @@ function generatePalette(currentPalette) {
 }
 
 function dispayMinis(){
-savedPaletteBoxCont.innerHTML += `
-<div class="saved-palette-box-container">
-    <div class="mini-box" style="background-color: ${currentPalette.hexColors[0].hexCode}"></div>
-    <div class="mini-box" style="background-color: ${currentPalette.hexColors[1].hexCode}"></div>
-    <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
-    <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
-    <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
-    </div>
-   `
+    savedPaletteBoxCont.innerHTML += `
+    <div class="saved-palette-box-container">
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[0].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[1].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
+        </div>
+    `
 }
 
 function displayHexCodes(){
@@ -143,7 +144,13 @@ function changeLock(event) {
 saveButton.addEventListener('click', savePalette)
 
 function savePalette() {
-    savedPalettes.push(currentPalette)
+    if(savedPalettes){
+        noSavedText.innerText = "";
+    } 
+    if(savedPalettes.includes(currentPalette)){
+        return
+    } else {
+        savedPalettes.push(currentPalette)
+    }
     dispayMinis()
-    console.log(savedPalettes)
 }

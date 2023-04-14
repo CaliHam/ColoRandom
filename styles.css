@@ -115,11 +115,9 @@ h1 {
     transform: scale(1.1);
 }
 
-.hidden{
-    display:none;
-}
 
-.saved-palette-wrapper{
+
+.saved-palette-wrapper {
     position: absolute;
     top: 0;
     right: 0;
@@ -134,7 +132,9 @@ h1 {
     justify-content: center;
     flex-wrap: wrap;
     align-content: start;
+    margin: 5px 0px 5px 0px
 }
+
 
 .mini-box {
     height: 35px;
@@ -145,4 +145,11 @@ h1 {
 
 .saved-palette-header {
     text-align: center;
+    font-size: 30px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+.hidden{
+    display:none;
 }
