@@ -9,6 +9,7 @@ var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper')
 var savedPaletteHeader = document.querySelector('.saved-palette-header')
 var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container')
 var noSavedText = document.querySelector('.no-saved')
+
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
     event.preventDefault();
@@ -96,7 +97,7 @@ function generatePalette(currentPalette) {
     return updatedPalette
 }
 
-function dispayMinis(){
+function displayMinis(){
     savedPaletteBoxCont.innerHTML = ""
     if (!savedPalettes.length){
         savedPaletteBoxCont.innerHTML = `<p class="no-saved"><em>No Saved Palettes</em></p>`
@@ -164,11 +165,11 @@ function savePalette() {
     } else {
         savedPalettes.push(currentPalette)
     }
-    dispayMinis()
+    displayMinis()
 }
 
 function deletePalette(index){
     console.log(savedPalettes[index])
     savedPalettes.splice(index, 1)
-    dispayMinis()
+    displayMinis()
 }
