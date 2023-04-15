@@ -5,16 +5,21 @@ var unlockButton = document.querySelectorAll('.unlock')
 var hexContainers = document.querySelectorAll('.hex-containers')
 var colorBoxWrapper = document.querySelector('.colorboxeswrapper')
 var saveButton = document.querySelector('.save-button')
-
+var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper')
+var savedPaletteHeader = document.querySelector('.saved-palette-header')
+var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container')
+var noSavedText = document.querySelector('.no-saved')
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
     event.preventDefault();
-    generatePalette(currentPalette)
+    var newPalette = generatePalette(currentPalette)
+    currentPalette = newPalette
     displayHexCodes()    
 });
 
 newPaletteButton.addEventListener('click', function() {
-    generatePalette(currentPalette)
+    var newPalette = generatePalette(currentPalette)
+    currentPalette = newPalette    
     displayHexCodes()    
 });
 
@@ -71,7 +76,7 @@ function generateHexCode(){
 
 //DOM- INNERHTML/TEXT, anything we see on the page 
 function generatePalette(currentPalette) {
-    var newPalette = [];
+    var newHexColors = [];
     for (var i = 0; i < currentPalette.hexColors.length; i++) {
         if (!currentPalette.hexColors[i].isLocked) {
             var hex = {
@@ -79,16 +84,27 @@ function generatePalette(currentPalette) {
                 isLocked: false,
                 id: `color${i+1}`
             };
-            newPalette.push(hex)
+            newHexColors.push(hex)
         } else {
-            newPalette.push(currentPalette.hexColors[i])
+            newHexColors.push(currentPalette.hexColors[i])
         }
     } 
     var updatedPalette = {
-        hexColors: newPalette,
+        hexColors: newHexColors,
         id: Date.now()
     }
     return updatedPalette
+}
+
+function dispayMinis(){
+    savedPaletteBoxCont.innerHTML += `
+    <div class="saved-palette-box-container">
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[0].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[1].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
+        </div>`
 }
 
 function displayHexCodes(){
@@ -127,6 +143,13 @@ function changeLock(event) {
 saveButton.addEventListener('click', savePalette)
 
 function savePalette() {
-    savedPalettes.push(currentPalette)
-    console.log(savedPalettes)
+    if(savedPalettes){
+        noSavedText.innerText = "";
+    } 
+    if(savedPalettes.includes(currentPalette)){
+        return
+    } else {
+        savedPalettes.push(currentPalette)
+    }
+    dispayMinis()
 }

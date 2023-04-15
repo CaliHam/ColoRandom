@@ -3,6 +3,13 @@
     background-color: #E7F1F1;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    margin-right: 300px;
+    height: 100vh;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -79,19 +86,19 @@ h1 {
     font-weight: 300;
 }
 
-.buttons-wrapper{
+.buttons-wrapper {
     display: flex;
     justify-content: center;
 }
 
-.new-save-container{
+.new-save-container {
     display:flex;
     justify-content: space-around;
     margin: 10%;
     width:640px;
 }
 
-.new-button, .save-button{
+.new-button, .save-button {
     background-color: black;
     color: white;
     border-top-right-radius: 250px;
@@ -107,6 +114,41 @@ h1 {
     transform: scale(1.1);
 }
 
-.hidden{
+
+
+.saved-palette-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    border-left: 2px solid black;
+  }
+
+.saved-palette-box-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: start;
+    margin: 5px 0px 5px 0px
+}
+
+
+.mini-box {
+    height: 35px;
+    width: 35px;
+    margin: 5px;
+    border: 3px solid black
+}
+
+.saved-palette-header {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+.hidden {
     display:none;
 }
