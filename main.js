@@ -104,8 +104,7 @@ function dispayMinis(){
         <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
         <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
         <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
-        </div>
-    `
+        </div>`
 }
 
 function displayHexCodes(){

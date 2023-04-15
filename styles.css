@@ -1,7 +1,6 @@
 * {
     font-family: 'Poppins', sans-serif;
     background-color: #E7F1F1;
-    /* border: 2px solid red  */
 }
 
 body {
@@ -87,19 +86,19 @@ h1 {
     font-weight: 300;
 }
 
-.buttons-wrapper{
+.buttons-wrapper {
     display: flex;
     justify-content: center;
 }
 
-.new-save-container{
+.new-save-container {
     display:flex;
     justify-content: space-around;
     margin: 10%;
     width:640px;
 }
 
-.new-button, .save-button{
+.new-button, .save-button {
     background-color: black;
     color: white;
     border-top-right-radius: 250px;
@@ -150,6 +149,6 @@ h1 {
     font-weight: 600;
 }
 
-.hidden{
+.hidden {
     display:none;
 }
