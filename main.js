@@ -1,14 +1,15 @@
 //QUERY SELECTORS
 var newPaletteButton = document.querySelector('.new-button');
-var lockButton = document.querySelectorAll('.lock')
-var unlockButton = document.querySelectorAll('.unlock')
-var hexContainers = document.querySelectorAll('.hex-containers')
-var colorBoxWrapper = document.querySelector('.colorboxeswrapper')
-var saveButton = document.querySelector('.save-button')
-var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper')
-var savedPaletteHeader = document.querySelector('.saved-palette-header')
-var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container')
-var noSavedText = document.querySelector('.no-saved')
+var lockButton = document.querySelectorAll('.lock');
+var unlockButton = document.querySelectorAll('.unlock');
+var hexContainers = document.querySelectorAll('.hex-containers');
+var colorBoxWrapper = document.querySelector('.colorboxeswrapper');
+var saveButton = document.querySelector('.save-button');
+var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper');
+var savedPaletteHeader = document.querySelector('.saved-palette-header');
+var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container');
+var noSavedText = document.querySelector('.no-saved');
+
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
     event.preventDefault();
@@ -17,12 +18,13 @@ window.addEventListener("load", function(event){
     displayHexCodes()    
 });
 
+saveButton.addEventListener('click', savePalette);
+
 newPaletteButton.addEventListener('click', function() {
     var newPalette = generatePalette(currentPalette)
     currentPalette = newPalette    
     displayHexCodes()    
 });
-
 
 //GLOBAL VARIABLES
 var hexCharacters = ['A','B','C','D','E','F','0','1','2','3','4','5','6','7','8','9'];
@@ -54,14 +56,12 @@ var currentPalette = {
         id: 'color5'
     }],
     id: Date.now()
-}
-
+};
 
 //JS 
-//DATA MODEL- anything that is stored
 function generateRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
-}
+};
 
 function generateHexCode(){
     var hexCodes = [];
@@ -71,10 +71,8 @@ function generateHexCode(){
     }
     var hexCodeString = '#' + hexCodes.join('')
     return hexCodeString
-    }
+};
 
-
-//DOM- INNERHTML/TEXT, anything we see on the page 
 function generatePalette(currentPalette) {
     var newHexColors = [];
     for (var i = 0; i < currentPalette.hexColors.length; i++) {
@@ -94,18 +92,31 @@ function generatePalette(currentPalette) {
         id: Date.now()
     }
     return updatedPalette
-}
+};
 
-function dispayMinis(){
+function displayMinis(){
+    savedPaletteBoxCont.innerHTML = ""
+    if (!savedPalettes.length){
+        savedPaletteBoxCont.innerHTML = `<p class="no-saved"><em>No Saved Palettes</em></p>`
+    }
+    for (var i = 0; i<savedPalettes.length; i++) {
     savedPaletteBoxCont.innerHTML += `
-    <div class="saved-palette-box-container">
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[0].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[1].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
-        </div>`
-}
+    <div class="saved-palette-box-container" id="${savedPalettes[i].id}">
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[0].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[1].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[2].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[3].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[4].hexCode}"></div>
+        <button class='delete-button'></button>
+    </div>`
+    }
+    var allDeleteButts = document.querySelectorAll('.delete-button') 
+    allDeleteButts.forEach((container, index) => {
+        container.addEventListener('click', function(){
+            deletePalette(index)
+        })
+    })
+};
 
 function displayHexCodes(){
     hexContainers.forEach((hex, index) => {
@@ -114,7 +125,7 @@ function displayHexCodes(){
         box.style.backgroundColor = currentPalette.hexColors[index].hexCode
         hexValue.innerText = currentPalette.hexColors[index].hexCode
     })
-}
+};
 
 colorBoxWrapper.addEventListener('click', function(event) {
     if(event.target.classList.contains('unlock')) {
@@ -133,14 +144,12 @@ function toggleLocks(e) {
         }
     }
     changeLock(e)
-}
+};
 
 function changeLock(event) {
     event.target.classList.toggle('lock')
     event.target.classList.toggle('unlock')
-}
-
-saveButton.addEventListener('click', savePalette)
+};
 
 function savePalette() {
     if(savedPalettes){
@@ -151,5 +160,11 @@ function savePalette() {
     } else {
         savedPalettes.push(currentPalette)
     }
-    dispayMinis()
-}
+    displayMinis()
+};
+
+function deletePalette(index){
+    console.log(savedPalettes[index])
+    savedPalettes.splice(index, 1)
+    displayMinis()
+};

@@ -13,7 +13,6 @@ body {
 header {
     display: flex;
     justify-content: center;
-    
 }
 
 h1 {
@@ -24,7 +23,6 @@ h1 {
 .colorboxeswrapper {
     display: flex;
     justify-content: center;
-
 }
 
 .box {
@@ -46,7 +44,6 @@ h1 {
     border: none;
     margin-bottom: 3px;
 }
-
 
 .unlock {
     height: 28px;
@@ -78,7 +75,6 @@ h1 {
     background-color: #A4C4CA;
 }
 
-
 .hexvalue {
     width: 100px;
     margin: 10px;
@@ -109,19 +105,22 @@ h1 {
     font-size: 20px;
 }
 
-.new-button:hover, .save-button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-
+.delete-button {
+    height: 28px;
+    width: 28px;
+    margin: 10px;
+    background-image: url("assets/delete.png");
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+ }
 
 .saved-palette-wrapper {
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
-    width: 300px;
+    width: 350px;
     border-left: 2px solid black;
   }
 
@@ -134,6 +133,10 @@ h1 {
     margin: 5px 0px 5px 0px
 }
 
+.new-button:hover, .save-button:hover, .delete-button:hover, .lock:hover, .unlock:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
 
 .mini-box {
     height: 35px;
