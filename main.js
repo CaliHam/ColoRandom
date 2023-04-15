@@ -97,15 +97,27 @@ function generatePalette(currentPalette) {
 }
 
 function dispayMinis(){
+    savedPaletteBoxCont.innerHTML = ""
+    if (!savedPalettes.length){
+        savedPaletteBoxCont.innerHTML = `<p class="no-saved"><em>No Saved Palettes</em></p>`
+    }
+    for (var i = 0; i<savedPalettes.length; i++) {
     savedPaletteBoxCont.innerHTML += `
-    <div class="saved-palette-box-container">
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[0].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[1].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[2].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[3].hexCode}"></div>
-        <div class="mini-box" style="background-color: ${currentPalette.hexColors[4].hexCode}"></div>
+    <div class="saved-palette-box-container" id="${savedPalettes[i].id}">
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[0].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[1].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[2].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[3].hexCode}"></div>
+        <div class="mini-box" style="background-color: ${savedPalettes[i].hexColors[4].hexCode}"></div>
         <button class='delete-button'></button>
     </div>`
+    }
+    var allDeleteButts = document.querySelectorAll('.delete-button') 
+    allDeleteButts.forEach((container, index) => {
+        container.addEventListener('click', function(){
+            deletePalette(index)
+        })
+    })
 }
 
 function displayHexCodes(){
@@ -152,5 +164,11 @@ function savePalette() {
     } else {
         savedPalettes.push(currentPalette)
     }
+    dispayMinis()
+}
+
+function deletePalette(index){
+    console.log(savedPalettes[index])
+    savedPalettes.splice(index, 1)
     dispayMinis()
 }
