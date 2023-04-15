@@ -1,14 +1,14 @@
 //QUERY SELECTORS
 var newPaletteButton = document.querySelector('.new-button');
-var lockButton = document.querySelectorAll('.lock')
-var unlockButton = document.querySelectorAll('.unlock')
-var hexContainers = document.querySelectorAll('.hex-containers')
-var colorBoxWrapper = document.querySelector('.colorboxeswrapper')
-var saveButton = document.querySelector('.save-button')
-var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper')
-var savedPaletteHeader = document.querySelector('.saved-palette-header')
-var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container')
-var noSavedText = document.querySelector('.no-saved')
+var lockButton = document.querySelectorAll('.lock');
+var unlockButton = document.querySelectorAll('.unlock');
+var hexContainers = document.querySelectorAll('.hex-containers');
+var colorBoxWrapper = document.querySelector('.colorboxeswrapper');
+var saveButton = document.querySelector('.save-button');
+var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper');
+var savedPaletteHeader = document.querySelector('.saved-palette-header');
+var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container');
+var noSavedText = document.querySelector('.no-saved');
 
 //EVENT LISTENERS
 window.addEventListener("load", function(event){
@@ -18,12 +18,13 @@ window.addEventListener("load", function(event){
     displayHexCodes()    
 });
 
+saveButton.addEventListener('click', savePalette);
+
 newPaletteButton.addEventListener('click', function() {
     var newPalette = generatePalette(currentPalette)
     currentPalette = newPalette    
     displayHexCodes()    
 });
-
 
 //GLOBAL VARIABLES
 var hexCharacters = ['A','B','C','D','E','F','0','1','2','3','4','5','6','7','8','9'];
@@ -55,14 +56,12 @@ var currentPalette = {
         id: 'color5'
     }],
     id: Date.now()
-}
-
+};
 
 //JS 
-//DATA MODEL- anything that is stored
 function generateRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
-}
+};
 
 function generateHexCode(){
     var hexCodes = [];
@@ -72,10 +71,8 @@ function generateHexCode(){
     }
     var hexCodeString = '#' + hexCodes.join('')
     return hexCodeString
-    }
+};
 
-
-//DOM- INNERHTML/TEXT, anything we see on the page 
 function generatePalette(currentPalette) {
     var newHexColors = [];
     for (var i = 0; i < currentPalette.hexColors.length; i++) {
@@ -95,7 +92,7 @@ function generatePalette(currentPalette) {
         id: Date.now()
     }
     return updatedPalette
-}
+};
 
 function displayMinis(){
     savedPaletteBoxCont.innerHTML = ""
@@ -119,7 +116,7 @@ function displayMinis(){
             deletePalette(index)
         })
     })
-}
+};
 
 function displayHexCodes(){
     hexContainers.forEach((hex, index) => {
@@ -128,7 +125,7 @@ function displayHexCodes(){
         box.style.backgroundColor = currentPalette.hexColors[index].hexCode
         hexValue.innerText = currentPalette.hexColors[index].hexCode
     })
-}
+};
 
 colorBoxWrapper.addEventListener('click', function(event) {
     if(event.target.classList.contains('unlock')) {
@@ -147,14 +144,12 @@ function toggleLocks(e) {
         }
     }
     changeLock(e)
-}
+};
 
 function changeLock(event) {
     event.target.classList.toggle('lock')
     event.target.classList.toggle('unlock')
-}
-
-saveButton.addEventListener('click', savePalette)
+};
 
 function savePalette() {
     if(savedPalettes){
@@ -166,10 +161,10 @@ function savePalette() {
         savedPalettes.push(currentPalette)
     }
     displayMinis()
-}
+};
 
 function deletePalette(index){
     console.log(savedPalettes[index])
     savedPalettes.splice(index, 1)
     displayMinis()
-}
+};
