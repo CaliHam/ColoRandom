@@ -109,19 +109,27 @@ h1 {
     font-size: 20px;
 }
 
-.new-button:hover, .save-button:hover {
+.new-button:hover, .save-button:hover .delete-button:hover{
     cursor: pointer;
     transform: scale(1.1);
 }
 
-
+.delete-button {
+    height: 28px;
+    width: 28px;
+    margin: 10px;
+    background-image: url("assets/delete.png");
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+ }
 
 .saved-palette-wrapper {
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
-    width: 300px;
+    width: 350px;
     border-left: 2px solid black;
   }
 
