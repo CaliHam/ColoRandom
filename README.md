@@ -11,16 +11,16 @@
 5. View the project in the browser by running open index.html in your terminal
 
 ### PREVIEW OF APP
-![Gif of webpage](assets/coloRandom.gif)
+![coloRandom](https://user-images.githubusercontent.com/119264690/232605587-0f641cec-893d-4867-9473-07580d384f66.gif)
 
 ### CONTEXT
 We all worked on this project together over the course of a week. We are on week 3 of Mod 1 in Turing.
 
 ### CONTRIBUTORS
-[Caitlin Cradick](https://github.com/caitlincradick)
-[Calli Herrmann](https://github.com/CaliHam/)
-[Marisa Wyatt](https://github.com/Marisa5280)
-[Paulina Rubio](https://github.com/paulina-isabel)
+- [Caitlin Cradick](https://github.com/caitlincradick)
+- [Calli Herrmann](https://github.com/CaliHam/)
+- [Marisa Wyatt](https://github.com/Marisa5280)
+- [Paulina Rubio](https://github.com/paulina-isabel)
 
 ### LEARNING GOALS
 * Write semantic HTML and efficient CSS to form a usable UI
