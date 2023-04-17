@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-header {
+header, .colorboxeswrapper, .buttons-wrapper, .saved-palette-box-container {
     display: flex;
     justify-content: center;
 }
@@ -18,11 +18,6 @@ header {
 h1 {
     font-size: 70px;
     font-weight: 800;
-}
-
-.colorboxeswrapper {
-    display: flex;
-    justify-content: center;
 }
 
 .box {
@@ -35,7 +30,7 @@ h1 {
     align-items: flex-end;
 }
 
-.lock {
+.lock, .unlock {
     height: 28px;
     width: 28px;
     background: transparent;
@@ -46,33 +41,7 @@ h1 {
 }
 
 .unlock {
-    height: 28px;
-    width: 28px;
-    background: transparent;
     background-image: url("assets/unlocked.png");
-    background-size: cover;
-    border: none;
-    margin-bottom: 3px;
-}
-
-#color1 {
-   background-color: #EA9999;
-}
-
-#color2 {
-   background-color: #FACB9C;
-}
-
-#color3 {
-    background-color: #FFE59A;
-}
-
-#color4 {
-    background-color: #B6D7A8;
-}
-
-#color5 {
-    background-color: #A4C4CA;
 }
 
 .hexvalue {
@@ -80,11 +49,6 @@ h1 {
     margin: 10px;
     text-align: center;
     font-weight: 300;
-}
-
-.buttons-wrapper {
-    display: flex;
-    justify-content: center;
 }
 
 .new-save-container {
@@ -125,9 +89,6 @@ h1 {
   }
 
 .saved-palette-box-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
     align-content: start;
     margin: 5px 0px 5px 0px

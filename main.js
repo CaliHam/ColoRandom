@@ -115,10 +115,10 @@ function displayMinis(){
         <button class='delete-button'></button>
     </div>`
     }
-    deleteButts()
+    deleteButtons()
 };
 
-function deleteButts() {
+function deleteButtons() {
     var allDeleteButts = document.querySelectorAll('.delete-button') 
     allDeleteButts.forEach((container, index) => {
         container.addEventListener('click', function(){
