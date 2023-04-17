@@ -1,17 +1,13 @@
 //QUERY SELECTORS
 var newPaletteButton = document.querySelector('.new-button');
-var lockButton = document.querySelectorAll('.lock');
-var unlockButton = document.querySelectorAll('.unlock');
 var hexContainers = document.querySelectorAll('.hex-containers');
 var colorBoxWrapper = document.querySelector('.colorboxeswrapper');
 var saveButton = document.querySelector('.save-button');
-var savedPaletteWrapper = document.querySelector('.saved-palete-wrapper');
-var savedPaletteHeader = document.querySelector('.saved-palette-header');
 var savedPaletteBoxCont = document.querySelector('.saved-palette-box-container');
 var noSavedText = document.querySelector('.no-saved');
 
 //EVENT LISTENERS
-window.addEventListener("load", function(event){
+window.addEventListener('load', function(event){
     event.preventDefault();
     var newPalette = generatePalette(currentPalette)
     currentPalette = newPalette
@@ -24,6 +20,15 @@ newPaletteButton.addEventListener('click', function() {
     var newPalette = generatePalette(currentPalette)
     currentPalette = newPalette    
     displayHexCodes()    
+});
+
+colorBoxWrapper.addEventListener('click', function(event) {
+    if(event.target.classList.contains('unlock')) {
+        toggleLocks(event);
+    } 
+    else if (event.target.classList.contains('lock')) {
+        toggleLocks(event);
+    }
 });
 
 //GLOBAL VARIABLES
@@ -110,13 +115,17 @@ function displayMinis(){
         <button class='delete-button'></button>
     </div>`
     }
+    deleteButtons()
+};
+
+function deleteButtons() {
     var allDeleteButts = document.querySelectorAll('.delete-button') 
     allDeleteButts.forEach((container, index) => {
         container.addEventListener('click', function(){
             deletePalette(index)
         })
     })
-};
+}
 
 function displayHexCodes(){
     hexContainers.forEach((hex, index) => {
@@ -126,15 +135,6 @@ function displayHexCodes(){
         hexValue.innerText = currentPalette.hexColors[index].hexCode
     })
 };
-
-colorBoxWrapper.addEventListener('click', function(event) {
-    if(event.target.classList.contains('unlock')) {
-        toggleLocks(event);
-    } 
-    else if (event.target.classList.contains('lock')) {
-        toggleLocks(event);
-    }
-});
 
 function toggleLocks(e) {
     var selectedBox = e.target.closest('div')
@@ -164,7 +164,6 @@ function savePalette() {
 };
 
 function deletePalette(index){
-    console.log(savedPalettes[index])
     savedPalettes.splice(index, 1)
     displayMinis()
 };
